@@ -37,7 +37,7 @@ public class Tester {
 
         String expected = std1.getClass().getSimpleName();
 
-        assertEquals(expected, "StudentDyplomer");
+        assertEquals("StudentDyplomer", expected);
     }
 
 
@@ -51,6 +51,9 @@ public class Tester {
                         " " + method.getName() +
                         "(" + getParameters(method) + ")")
                 .forEach(System.out::println);
+
+        int actual = stud.getClass().getDeclaredMethods().length;
+        assertEquals(10, actual);
     }
 
 
@@ -60,7 +63,7 @@ public class Tester {
 
         String superClass = student.getClass().getSuperclass().getSimpleName();
 
-        assertEquals(superClass, "Student");
+        assertEquals( "Student", superClass);
     }
 
     @Test(expected = RuntimeException.class)

@@ -1,10 +1,14 @@
 package ua.procamp;
 
 import java.math.BigDecimal;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 import java.util.function.*;
 
 public class CrazyLambdas {
+
+    private CrazyLambdas(){
+
+    }
 
     /**
      * Returns {@link Supplier} that always supply "Hello"
@@ -31,7 +35,7 @@ public class CrazyLambdas {
      * @return function that converts adds dollar sign
      */
     public static Function<BigDecimal, String> toDollarStringFunction() {
-        return bigDecimal -> "$" + bigDecimal;
+        return number -> "$" + number;
     }
 
     /**
@@ -43,7 +47,7 @@ public class CrazyLambdas {
      * @return a string predicate
      */
     public static Predicate<String> lengthInRangePredicate(int min, int max) {
-        return str -> str.length() >= min && str.length() < max;
+        return s -> s.length() >= min && s.length() < max;
     }
 
     /**
@@ -52,7 +56,7 @@ public class CrazyLambdas {
      * @return int supplier
      */
     public static IntSupplier randomIntSupplier() {
-        return () -> ThreadLocalRandom.current().nextInt();
+        return () -> new Random().nextInt();
     }
 
 
@@ -62,7 +66,7 @@ public class CrazyLambdas {
      * @return int operation
      */
     public static IntUnaryOperator boundedRandomIntSupplier() {
-        return bound -> ThreadLocalRandom.current().nextInt(bound);
+        return number -> new Random().nextInt(number);
     }
 
     /**
@@ -71,7 +75,7 @@ public class CrazyLambdas {
      * @return square operation
      */
     public static IntUnaryOperator intSquareOperation() {
-        return a -> a * a;
+        return n -> n*n;
     }
 
     /**
@@ -80,7 +84,7 @@ public class CrazyLambdas {
      * @return binary sum operation
      */
     public static LongBinaryOperator longSumOperation() {
-        return (a, b) -> a + b;
+        return Long::sum;
     }
 
     /**
@@ -100,7 +104,7 @@ public class CrazyLambdas {
      * @return a function supplier
      */
     public static Supplier<IntUnaryOperator> nMultiplyFunctionSupplier(int n) {
-        return () -> a -> n * a;
+        return () -> x -> n * x;
     }
 
     /**
@@ -151,7 +155,7 @@ public class CrazyLambdas {
      * @return a binary function that receiver predicate and function and compose them to create a new function
      */
     public static BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> functionToConditionalFunction() {
-        return (intOperation, intPredicate) -> a -> intPredicate.test(a) ? intOperation.applyAsInt(a) : a;
+        return (intUnaryOperator, intPredicate) -> x -> intPredicate.test(x) ? intUnaryOperator.applyAsInt(x) : x;
     }
 
     /**
@@ -163,4 +167,3 @@ public class CrazyLambdas {
         return () -> () -> () -> "WELL DONE!";
     }
 }
-

@@ -1,21 +1,21 @@
 public class Question {
 
-    private String question;
+    private String quest;
 
     public Question(String question) {
-        this.question = question;
+        this.quest = question;
     }
 
     public String getQuestion() {
-        return question;
+        return quest;
     }
 
     public void setQuestion(String question) {
-        this.question = question;
+        this.quest = question;
     }
 
 
     public String toString() {
-        return question;
+        return quest;
     }
 }

@@ -15,6 +15,13 @@ public class StackTest {
 	@Test
 	public void testPushElementOntoEmptyStack() {
 		intStack.push(234);
+
+		boolean result = intStack.isEmpty();
+
+		assertFalse(result);
+	}
+
+	private void assertFalse(boolean result) {
 	}
 
 	@Test(expected = EmptyStackException.class)

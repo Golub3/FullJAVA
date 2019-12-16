@@ -14,21 +14,6 @@ public class Student implements IStudent{
     private int course;
     private String indNumber;
 
-//    private Student(){
-//        this.name = "Vitaliy";
-//        this.course = 3;
-//        this.indNumber = "12312323";
-//    }
-//
-//    public Student(String name, int course, String indNumber){
-//        this.name = name;
-//        this.course = course;
-//        this.indNumber = indNumber;
-//    }
-
-
-
-
     public void changeCourse(int newCourse){
         course = newCourse;
     }

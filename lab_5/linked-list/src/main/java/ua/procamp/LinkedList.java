@@ -17,10 +17,10 @@ public class LinkedList<T> implements List<T> {
             throw new IllegalArgumentException();
         }
         Node<T> temp;
-        head = new Node<T>(elements[0], null);
+        head = new Node<>(elements[0], null);
         temp = head;
         for (int i = 1; i < elements.length; i++, temp = temp.next) {
-            temp.next = new Node<T>(elements[i], null);
+            temp.next = new Node<>(elements[i], null);
         }
     }
     public LinkedList() {}
@@ -33,7 +33,7 @@ public class LinkedList<T> implements List<T> {
      * @return a new list of elements the were passed as method parameters
      */
     public static <T> List<T> of(T... elements) {
-        return new LinkedList<T>(elements);
+        return new LinkedList<>(elements);
     }
 
     /**
@@ -44,13 +44,13 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void add(T element) {
         if(head == null){
-            head = new Node<T>(element,null);
+            head = new Node<>(element,null);
         }else {
             Node<T> tempNode = head;
             while (tempNode.next != null) {
                 tempNode = tempNode.next;
             }
-            tempNode.next = new Node<T>(element, null);
+            tempNode.next = new Node<>(element, null);
         }
     }
 
@@ -67,13 +67,13 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
-            head = new Node<T>(element, head);
+            head = new Node<>(element, head);
         } else {
             Node<T> tempNode = head;
             for (int i = 0; i < index - 1; i++) {
                 tempNode = tempNode.next;
             }
-            tempNode.next = new Node<T>(element, tempNode.next);
+            tempNode.next = new Node<>(element, tempNode.next);
         }
     }
 
@@ -90,13 +90,13 @@ public class LinkedList<T> implements List<T> {
             throw new IndexOutOfBoundsException();
         }
         if (index == 0) {
-            head = new Node<T>(element, head.next);
+            head = new Node<>(element, head.next);
         } else {
             Node<T> tempNode = head;
             for (int i = 0; i < index - 1; i++) {
                 tempNode = tempNode.next;
             }
-            tempNode.next = new Node<T>(element, tempNode.next.next);
+            tempNode.next = new Node<>(element, tempNode.next.next);
         }
     }
 
@@ -169,11 +169,7 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
-        if (head == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return head == null;
     }
 
     /**

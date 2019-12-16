@@ -14,8 +14,7 @@ public class MyInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         if(method.getName().startsWith("set")){
-            throw new RuntimeException("Setter was called");
-//            System.out.println("Setter exception");
+            throw new MyOwnRuntimeException("Setter was called");
         }
 
         return method.invoke(object, args);
